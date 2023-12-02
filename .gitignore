@@ -5,6 +5,14 @@
 ## User settings
 xcuserdata/
 
+## Windows swift compiler
+*.exe
+*.lib
+*.exp
+
+## aoc
+test.txt
+
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
 *.xccheckout
