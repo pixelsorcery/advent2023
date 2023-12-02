@@ -1,6 +1,7 @@
 import Foundation
 
 let nums:[String] = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+let replacements:[String] = ["z0ero", "o1ne", "t2wo", "t3hree", "f4our", "f5ive", "s6ix", "s7even", "e8ight", "n9ine"]
 
 func getFirstNum(str: String) -> Int {
     for c in str {
@@ -20,13 +21,12 @@ func getLastNum(str: String) -> Int {
     return -1
 }
 
-func getFirstNum2(str: String) -> Int {
-
-    return -1
-}
-
-func getLastNum2(str: String) -> Int {
-    return -1
+func replaceNum(str: String) -> String {
+    var result = str;
+    for i in 0...9 {
+        result = result.replacingOccurrences(of:nums[i], with: replacements[i])
+    }
+    return result
 }
 
 let path = Bundle.main.path(forResource: "input", ofType: "txt")!
@@ -44,14 +44,13 @@ for l in lines {
         pt1 += num
     }
 
-    let first2 = getFirstNum2(str:l)
-    let second2 = getLastNum2(str:l)
-    if (first > 0 && second > 0) {
+    let l2 = replaceNum(str:l)
+    let first2 = getFirstNum(str:l2)
+    let second2 = getLastNum(str:l2)
+    if (first2 > 0 && second2 > 0) {
         let num = first2 * 10 + second2
         pt2 += num
     }
-    let index = l.index(l.startIndex, offsetBy: 0)
-    print("\(l[index])")
 }
 
 print("pt1: \(pt1)")
